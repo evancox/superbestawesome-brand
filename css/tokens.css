@@ -1,0 +1,65 @@
+/*
+ * superbestawesome colour and shape tokens.
+ *
+ * Three switches, all set on <html>:
+ *   class="dark"            dark theme (theme-init.js applies the saved choice before paint)
+ *   data-product="journal"  the product's lead colour (default: library pink)
+ *   data-tone="calm"        the quieter version of the brand: smaller shadows, softer
+ *                           backdrop, straighter display type. The wordmark never calms down.
+ *
+ * With no attributes at all you get exactly the original library look.
+ */
+
+:root {
+  --bg: #fff8ec;
+  --card: #ffffff;
+  --ink: #2b1b3f;
+  --muted: #6e5f80;
+  --line: #2b1b3f;
+  --soft: #f3e9f9;
+  --pink: #ff4f8b;
+  --yellow: #ffc93c;
+  --teal: #14b8a6;
+  --coral: #ff6b5e;
+  --violet: #7c3aed;
+  --sky: #38bdf8;
+  --blob-a: rgb(255 79 139 / 0.16);
+  --blob-b: rgb(20 184 166 / 0.16);
+  --blob-c: rgb(255 201 60 / 0.2);
+
+  /* Product lead colour, and the text colour that reads on it. */
+  --accent: var(--pink);
+  --accent-ink: #ffffff;
+
+  /* Tone. */
+  --pop: 5px; /* card offset shadow */
+  --pop-sm: 3px; /* button and sticker offset shadow */
+  --display-wonk: 1; /* Fraunces WONK axis for headings */
+  --backdrop-opacity: 1;
+}
+
+.dark {
+  --bg: #1b1228;
+  --card: #261a38;
+  --ink: #fff3e2;
+  --muted: #bcaed0;
+  --line: #fff3e2;
+  --soft: #34254a;
+  --blob-a: rgb(255 79 139 / 0.14);
+  --blob-b: rgb(20 184 166 / 0.12);
+  --blob-c: rgb(124 58 237 / 0.18);
+}
+
+/* Products. Keep in step with src/products.ts. */
+:root[data-product='journal'] {
+  --accent: var(--teal);
+  --accent-ink: #2b1b3f; /* white on teal is too faint to read */
+}
+
+/* Calm tone. */
+:root[data-tone='calm'] {
+  --pop: 3px;
+  --pop-sm: 2px;
+  --display-wonk: 0;
+  --backdrop-opacity: 0.5;
+}

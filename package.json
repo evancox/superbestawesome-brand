@@ -1,0 +1,63 @@
+{
+  "name": "@superbestawesome/brand",
+  "version": "0.1.0",
+  "description": "The shared look and voice of superbestawesome products.",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./products": {
+      "types": "./dist/products.d.ts",
+      "default": "./dist/products.js"
+    },
+    "./theme.css": "./css/theme.css",
+    "./tokens.css": "./css/tokens.css",
+    "./theme-init.js": "./assets/theme-init.js"
+  },
+  "files": [
+    "dist",
+    "css",
+    "assets",
+    "bin",
+    "VOICE.md"
+  ],
+  "bin": {
+    "sba-icons": "./bin/make-icons.mjs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "preview": "vite --config preview/vite.config.ts",
+    "build:preview": "vite build --config preview/vite.config.ts",
+    "check": "npm run typecheck && npm test && npm run build && git diff --exit-code -- dist && npm run build:preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/nunito": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5",
+    "vitest": "^3.2.7"
+  }
+}
