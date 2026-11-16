@@ -1,0 +1,162 @@
+/*
+ * superbestawesome theme for Tailwind CSS v4.
+ *
+ * In a product's main stylesheet:
+ *   @import "tailwindcss";
+ *   @import "@superbestawesome/brand/theme.css";
+ */
+
+@import '@fontsource-variable/fraunces/full.css';
+@import '@fontsource-variable/fraunces/full-italic.css';
+@import '@fontsource-variable/nunito/wght.css';
+@import './tokens.css';
+
+/* Let Tailwind see the class names used by the shared components. */
+@source '../dist';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Nunito Variable', ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-pink: var(--pink);
+  --color-yellow: var(--yellow);
+  --color-teal: var(--teal);
+  --color-coral: var(--coral);
+  --color-violet: var(--violet);
+  --color-sky: var(--sky);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-violet;
+  }
+  ::selection {
+    background: var(--yellow);
+    color: #2b1b3f;
+  }
+}
+
+/* Display type: soft Fraunces, wonky unless the tone is calm. */
+@utility font-display {
+  font-family: var(--font-display);
+  font-variation-settings: 'SOFT' 100, 'WONK' var(--display-wonk);
+}
+
+/* Wordmark with stacked colour stripes behind it. Always full volume. */
+@utility wordmark {
+  font-family: var(--font-display);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-shadow:
+    1.5px 1.5px 0 var(--pink),
+    3px 3px 0 var(--yellow),
+    4.5px 4.5px 0 var(--teal);
+}
+
+/* Chunky outlined card with an offset colour shadow. */
+@utility card {
+  @apply rounded-2xl border-2 border-line bg-card p-5;
+  box-shadow: var(--pop) var(--pop) 0 0 var(--card-pop, var(--line));
+}
+@utility pop-pink {
+  --card-pop: var(--pink);
+}
+@utility pop-yellow {
+  --card-pop: var(--yellow);
+}
+@utility pop-teal {
+  --card-pop: var(--teal);
+}
+@utility pop-violet {
+  --card-pop: var(--violet);
+}
+@utility pop-coral {
+  --card-pop: var(--coral);
+}
+@utility pop-accent {
+  --card-pop: var(--accent);
+}
+@utility pop-none {
+  box-shadow: none;
+}
+
+@utility btn {
+  @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-line px-5 text-sm font-extrabold
+    transition-transform select-none active:translate-x-[2px] active:translate-y-[2px] disabled:cursor-not-allowed disabled:opacity-50;
+  box-shadow: var(--pop-sm) var(--pop-sm) 0 0 var(--line);
+}
+@utility btn-primary {
+  @apply btn bg-accent text-accent-ink;
+}
+@utility btn-secondary {
+  @apply btn bg-card text-ink;
+}
+@utility btn-danger {
+  @apply btn bg-coral text-white;
+}
+@utility btn-quiet {
+  @apply inline-flex min-h-11 cursor-pointer items-center gap-1 rounded-full px-4 text-sm font-bold text-muted hover:text-ink;
+}
+
+@utility input {
+  @apply block min-h-11 w-full rounded-xl border-2 border-line/80 bg-card px-4 text-base text-ink placeholder:text-muted/70
+    focus:border-violet focus:outline-none;
+}
+@utility label {
+  @apply mb-1.5 block text-sm font-bold text-ink;
+}
+
+@utility chip {
+  @apply inline-flex min-h-9 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border-2 px-4 text-sm font-bold transition-colors;
+}
+@utility chip-off {
+  @apply chip border-line/25 bg-card text-muted hover:border-line/60 hover:text-ink;
+}
+@utility chip-on {
+  @apply chip border-line bg-ink text-bg;
+}
+
+/* "New" pill on cards. */
+@utility new-badge {
+  @apply inline-flex items-center rounded-full border-2 border-line bg-accent px-2 py-0.5 text-[11px] font-extrabold tracking-wide text-accent-ink uppercase;
+}
+
+/* Small tag pill: #holiday */
+@utility tag-chip {
+  @apply inline-flex items-center rounded-full border-2 border-line/30 bg-soft px-2.5 py-0.5 text-xs font-extrabold text-ink hover:border-line;
+}
+
+/* Tilted label, like a sticker slapped on the page. */
+@utility sticker {
+  @apply inline-block -rotate-2 rounded-full border-2 border-line bg-yellow px-4 py-1 text-xs font-extrabold tracking-[0.12em] text-[#2b1b3f] uppercase;
+  box-shadow: var(--pop-sm) var(--pop-sm) 0 0 var(--line);
+}
+
+@utility muted {
+  @apply text-muted;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
