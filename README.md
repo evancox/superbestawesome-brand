@@ -6,8 +6,12 @@ the wordmark, a few shared components, the product list, app icons and the voice
 ## Use it in a product
 
 ```sh
-npm install github:evancox/superbestawesome-brand#<commit-or-tag>
+npm install https://codeload.github.com/evancox/superbestawesome-brand/tar.gz/<commit>
 ```
+
+Use the tarball URL, not `github:` shorthand: npm records the shorthand as an SSH address in the
+lockfile, and CI and Netlify have no SSH key to fetch it with. This repo must stay public for the
+same reason.
 
 ```css
 /* src/index.css */
